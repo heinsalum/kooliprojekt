@@ -69,6 +69,7 @@
 
 		public function savePhoto($directory, $fileName){
 			$target_file = $directory .$fileName;
+			echo $target_file;
 			$notice = "";
 			if($this->imageFileType == "jpg" or $this->imageFileType == "jpeg"){
 				if(imagejpeg($this->myImage, $target_file, 90)){

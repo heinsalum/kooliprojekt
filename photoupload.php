@@ -18,14 +18,9 @@
 	//Liidan klassi
 	require("classes/Photoupload.class.php");
 	//Loome objekti
-	/*$myPhoto = new Photoupload("peidus");
-	echo $myPhoto->publicTest;
-	echo $myPhoto->privateTest;*/
-	//Loome objekti (ajutine fail, failitüüp
-	//$myPhoto = new Photoupload($_FILES["fileToUpload"]["tmp_name"], $imageFileType);
 	
 	//Algab foto laadimise osa
-	$target_dir = "pictures";
+	$target_dir = "pictures/";
 	$target_file;
 	$uploadOk = 1;
 	$imageFileType;
@@ -41,10 +36,7 @@
 		if(!empty($_FILES["fileToUpload"]["name"])){
 			
 			$imageFileType = strtolower(pathinfo(basename($_FILES["fileToUpload"]["name"]))["extension"]);
-			//$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-			//tekitame failinime koos ajatempliga
-			//$target_file = $target_dir .pathinfo(basename($_FILES["fileToUpload"]["name"]))["filename"] ."_" .(microtime(1) * 10000) ."." .$imageFileType;
-			$target_file = "hmv_" .(microtime(1) * 10000) ."." .$imageFileType;
+			$target_file = "kooliprojekt" .(microtime(1) * 10000) ."." .$imageFileType;
 			//$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 			
 			$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -62,11 +54,6 @@
 				$uploadOk = 0;
 			}
 			
-			/*Piirame faili suuruse
-			if ($_FILES["fileToUpload"]["size"] > 1000000) {
-				$notice .= "Pilt on liiga suur! ";
-				$uploadOk = 0;
-			}*/
 			
 			//Piirame failitüüpe
 			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
@@ -74,17 +61,7 @@
 				$uploadOk = 0;
 			}
 			
-			//Kas saab laadida?
-			/*if ($uploadOk == 0) {
-				$notice .= "Vabandust, pilti ei laetud üles! ";
-			//Kui saab üles laadida
-			} else {		
-				if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-					$notice .= "Fail ". basename( $_FILES["fileToUpload"]["name"]). " laeti üles! ";
-				} else {
-					$notice .= "Vabandust, üleslaadimisel tekkis tõrge! ";
-				}
-			}*/
+
 			if ($uploadOk == 0) {
 				$notice .= "Vabandust, pilti ei laetud üles! ";
 			//Kui saab üles laadida
@@ -96,7 +73,6 @@
 				$myPhoto = new Photoupload($_FILES["fileToUpload"]["tmp_name"], $imageFileType);
 				$myPhoto->readExif();
 				$myPhoto->resizeImage($maxWidth, $maxHeight);
-				//$myPhoto->addTextWatermark($myPhoto->exifToImage);
 				$myPhoto->savePhoto($target_dir, $target_file);
 				$myPhoto->clearImages();
 				unset($myPhoto);
@@ -107,12 +83,7 @@
 		} else {
 			$notice = "Palun valige kõigepealt pildifail!";
 		} //kas üldse mõni fail valiti, lõppeb
-	}//kas vajutati submit nuppu, lõppeb
-	/*function resize_image($image, $origW, $origH, $w, $h){
-		$dst = imagecreatetruecolor($w, $h);
-		imagecopyresampled($dst, $image, 0, 0, 0, 0, $w, $h, $origW, $origH);
-		return $dst;
-	}*/
+	}
 	require("header.php");
 ?>
 	<hr>
