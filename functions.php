@@ -1,6 +1,6 @@
 <?php
 	require ("config.php");
-	$database ="if17_rootkris";
+	$database = "if17_rootkris";
 	
 	session_start();
 	
@@ -9,7 +9,7 @@
 		$notice = "";
 		//ühendus serveriga
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-		$stmt = $mysqli->prepare("SELECT id, email, password FROM kasutajd WHERE email = ?");
+		$stmt = $mysqli->prepare("SELECT id, email, password FROM kasutajad WHERE email = ?");
 		$stmt->bind_param("s", $email);
 		$stmt->bind_result($id, $emailFromDb, $passwordFromDb);
 		$stmt->execute();
