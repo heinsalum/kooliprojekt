@@ -115,7 +115,7 @@
 	}*/
 	require("header.php");
 ?>
-	<hr>
+
 	<h2>Foto üleslaadimine</h2>
 	<form action="photoupload.php" method="post" enctype="multipart/form-data">
 		<label>Valige pildifail:</label>
