@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<body>
+<hr>
+<p>Veebilehe arendajad: </p>
+<p>Markus Heinsalu</p>
+<p>Kristo Roots</p>
+<p>Nikita Mikson</p>
+</body>
+</html>
