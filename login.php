@@ -1,6 +1,5 @@
 <?php
 	require ("functions.php");
-
 	if (isset($_SESSION["userId"])){
 		header("Location: pealeht.php");
 		exit();
@@ -186,7 +185,6 @@
 		
 	}
 	$signupYearSelectHTML.= "</select> \n";
-
 ?>
 
 <!DOCTYPE html>
@@ -194,20 +192,20 @@
 <head>
 	<meta charset="utf-8">
 	<title>Sisselogimine või uue kasutaja loomine</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="styles/general.css">
 </head>
 <body>
-	<h2>Logi sisse!</h2>
-	
-	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-		<label>Kasutajanimi (E-post): </label>
-		<input name="loginEmail" type="email" value="<?php echo $loginEmail; ?>"><span class="errornotice"><?php echo $loginEmailError; ?></span>
-		<br><br>
-		<input name="loginPassword" placeholder="Salasõna" type="password"><span></span>
-		<br><br>
-		<input name="loginButton" type="submit" value="Logi sisse"><span class="errornotice"><?php echo $notice; ?></span>
-	</form>
-	
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<h2>Logi sisse!</h2>
+		<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+			<label>Kasutajanimi (E-post): </label>
+			<input name="loginEmail" type="email" value="<?php echo $loginEmail; ?>"><span class="errornotice"><?php echo $loginEmailError; ?></span>
+			<input name="loginPassword" placeholder="Salasõna" type="password"><span></span>
+			<input name="loginButton" type="submit" value="Logi sisse"><span class="errornotice"><?php echo $notice; ?></span>
+		</form>
+	</nav>
+	<div class="container">
 	<h1>Loo kasutaja</h1>
 	<p>Kui pole veel kasutajat....</p>
 	
@@ -244,7 +242,7 @@
 		
 		<input name="signUpButton" type="submit" value="Loo kasutaja">
 	</form>
-	
+	</div>
 <?php
 require("footer.php");
 ?>
