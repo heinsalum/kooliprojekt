@@ -14,7 +14,19 @@
 		session_destroy();
 		header("Location: login.php");
 	}
+	
+	require("header.php");
+?>
+
+<p><a href="photupload.php">Lisa pilte</a><p>
+<img src="http://placehold.it/300x200" alt="#">
+<img src="http://placehold.it/300x200" alt="#">
+<img src="http://placehold.it/300x200" alt="#">
+<img src="http://placehold.it/300x200" alt="#">
+
+<?php
+
+require("footer.php");
 
 ?>
 
-<link rel="stylesheet" type="text/css" href="styles/gallery.css" >
