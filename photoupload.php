@@ -115,9 +115,6 @@
 	}*/
 	require("header.php");
 ?>
-
-	<p><a href="?logout=1">Logi välja</a>!</p>
-	<p><a href="pealeht.php">Pealehele</a></p>
 	<hr>
 	<h2>Foto üleslaadimine</h2>
 	<form action="photoupload.php" method="post" enctype="multipart/form-data">

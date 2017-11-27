@@ -18,7 +18,7 @@
 	require("header.php");
 ?>
 
-<p><a href="photupload.php">Lisa pilte</a><p>
+<p><a href="photoupload.php">Lisa pilte</a><p>
 <img src="http://placehold.it/300x200" alt="#">
 <img src="http://placehold.it/300x200" alt="#">
 <img src="http://placehold.it/300x200" alt="#">
