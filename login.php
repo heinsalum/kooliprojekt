@@ -188,3 +188,62 @@
 	$signupYearSelectHTML.= "</select> \n";
 
 ?>
+
+<!DOCTYPE html>
+<html lang="et">
+<head>
+	<meta charset="utf-8">
+	<title>Sisselogimine või uue kasutaja loomine</title>
+</head>
+<body>
+	<h2>Logi sisse!</h2>
+	
+	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+		<label>Kasutajanimi (E-post): </label>
+		<input name="loginEmail" type="email" value="<?php echo $loginEmail; ?>"><span><?php echo $loginEmailError; ?></span>
+		<br><br>
+		<input name="loginPassword" placeholder="Salasõna" type="password"><span></span>
+		<br><br>
+		<input name="loginButton" type="submit" value="Logi sisse"><span><?php echo $notice; ?></span>
+	</form>
+	
+	<h1>Loo kasutaja</h1>
+	<p>Kui pole veel kasutajat....</p>
+	
+	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+		<label>Eesnimi </label>
+		<input name="signupFirstName" type="text" value="<?php echo $signupFirstName; ?>">
+		<span><?php echo $signupFirstNameError; ?></span>
+		<br>
+		<label>Perekonnanimi </label>
+		<input name="signupFamilyName" type="text" value="<?php echo $signupFamilyName; ?>">
+		<span><?php echo $signupFamilyNameError; ?></span>
+		<br>
+		<label>Sisesta oma sünnikuupäev</label>
+		<?php
+			echo $signupDaySelectHTML .$signupMonthSelectHTML .$signupYearSelectHTML;
+		?>
+		<span><?php echo $signupBirthDayError; ?></span>
+		
+		<br><br>
+		<label>Sugu</label>
+		<br>
+		<input type="radio" name="gender" value="1" <?php if ($gender == "1") {echo 'checked';} ?>><label>Mees</label> <!-- Kõik läbi POST'i on string!!! -->
+		<input type="radio" name="gender" value="2" <?php if ($gender == "2") {echo 'checked';} ?>><label>Naine</label><span><?php echo $signupGenderError; ?></span>
+		<br><br>
+		
+		<label>Kasutajanimi (E-post)</label>
+		<input name="signupEmail" type="email" value="<?php echo $signupEmail; ?>">
+		<span><?php echo $signupEmailError; ?></span>
+		<br><br>
+		<input name="signupPassword" placeholder="Salasõna" type="password">
+		<span><?php echo $signupPasswordError; ?></span>
+		<br><br>
+
+		
+		<input name="signUpButton" type="submit" value="Loo kasutaja">
+	</form>
+	
+<?php
+require("footer.php");
+?>
