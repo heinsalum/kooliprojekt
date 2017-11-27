@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<body>
+
 <hr>
 <p>Veebilehe arendajad: </p>
 <p>Markus Heinsalu</p>
