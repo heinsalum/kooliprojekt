@@ -5,6 +5,6 @@
 <p>Veebilehe arendajad: </p>
 <p>Markus Heinsalu</p>
 <p>Kristo Roots</p>
-<p>Nikita Mikson</p>
+<p>Erik Enden</p>
 </body>
 </html>
