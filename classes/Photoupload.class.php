@@ -68,8 +68,15 @@
 		}
 
 		public function savePhoto($directory, $fileName){
+<<<<<<< HEAD
 			$target_file = $directory .$fileName;
 			echo $target_file;
+=======
+			var_dump($directory);
+			echo getcwd();
+			$target_file = $directory . "/".$fileName;
+			var_dump($target_file);
+>>>>>>> 91022f656d98f3382db9102c1e06290c2675e381
 			$notice = "";
 			if($this->imageFileType == "jpg" or $this->imageFileType == "jpeg"){
 				if(imagejpeg($this->myImage, $target_file, 90)){

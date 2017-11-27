@@ -1,0 +1,10 @@
+body
+{
+background-color:#eeeeee;
+}
+
+.errornotice
+{
+	color:red;
+	font-weight:bold;
+}
