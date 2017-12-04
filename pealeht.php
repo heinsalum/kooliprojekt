@@ -25,10 +25,6 @@
 	<title>Pildigalerii</title>
 </head>
 <body>
-	
-	<p>See veebileht on loodud veebiprogrammeerimise tunni projekti raames.</p>
-	<button type="button" class="btn btn-danger"> <a href="?logout=1"> Logi välja</a></button>
-	<button type="button" class="btn btn-warning"> <a href="photoupload.php">Pildi lisamise leht</a> </button>
 
 	<h1>Lisatud pildid</h1>
 	
