@@ -26,7 +26,8 @@
 </head>
 <body>
 
-	<h1>Lisatud pildid</h1>
+	<h1>Lisatud pildid</h1
+	<link rel="stylesheet" type="text/css" href="styles/general.css">
 	
 	<img src="http://placehold.it/300x200" alt="#">
 	<img src="http://placehold.it/300x200" alt="#">
