@@ -67,5 +67,20 @@
 		$data = htmlspecialchars($data);//keelatud sümbolid
 		return $data;
 	}
+	
+	function testGal(){
+		$dir = "pictures/";
+		$galleryItems = [];
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+		$stmt = $mysqli->prepare("SELECT id, nimi, hinne, yleslaadija, fail FROM galeriid ORDER BY hinne DESC");
+		$stmt -> bind_result($id, $name, $rating, $uploader, $filename);
+		$stmt -> execute();
+		while ($stmt->fetch()) {
+			array_push($galleryItems, '<img class="galleryItem" src="' . $dir. $filename.'" alt="asi galeriis">');
+		}
+		return $galleryItems;
+		$stmt -> close();
+		$mysqli -> close();
+	}
 
 ?>
