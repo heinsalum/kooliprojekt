@@ -6,14 +6,18 @@
 	<link rel="stylesheet" type="text/css" href="styles/general.css" >
 </head>
 <body>
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
-	<a class="navbar-brand" href="pealeht.php">Pildigalerii projekt</a>
+
+<nav class="navbar navbar-expand-sm navbar-custom">
+	<a class="navbar-brand" href="pealeht.php">Tere tulemast pealehele!</a>
+	
 	<ul class="nav">
-		<li class="nav-item">
+		<li class="nav-item" >
 			<button type="button" class="btn btn-warning"> <a class="nav-link" href="photoupload.php">Lisa pilte</a></button>
 		</li> 
+		
 		<li class="nav-item">
 			 <button type="button" class="btn btn-warning"> <a class="nav-link" href="?logout=1">Logi välja</a></button>
 		</li>
+		
 	</ul>
 </nav>
