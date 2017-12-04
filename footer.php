@@ -1,8 +1,9 @@
+<footer class="footer">
+    <div class="container">
+        <p>Veebilehe arendajad: Markus Heinsalu | Kristo Roots | Erik Enden</p>
+    </div>
+</footer>
 
-<hr>
-<p>Veebilehe arendajad: </p>
-<p>Markus Heinsalu</p>
-<p>Kristo Roots</p>
-<p>Erik Enden</p>
+    
 </body>
 </html>

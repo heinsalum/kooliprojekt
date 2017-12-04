@@ -8,3 +8,13 @@ body
 	color:red;
 	font-weight:bold;
 }
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	background-color: #f8f9fa;
+	width: 100%;
+}
+.navbar {
+	background-color: #f8f9fa;
+}

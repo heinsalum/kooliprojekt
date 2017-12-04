@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/general.css" >
 </head>
 <body>
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<nav class="navbar navbar-expand-sm navbar-custom">
 	<a class="navbar-brand" href="pealeht.php">wao</a>
 	<ul class="nav">
 		<li class="nav-item">
