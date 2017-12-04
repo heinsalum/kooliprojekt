@@ -7,7 +7,14 @@
 	<link rel="stylesheet" type="text/css" href="styles/gallery.css" >
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-<h1>wao</h1>
-<p><a href="?logout=1">Logi välja</a></p>
-<hr>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+	<a class="navbar-brand" href="pealeht.php">wao</a>
+	<ul class="nav">
+		<li class="nav-item">
+			<a class="nav-link" href="photoupload.php">Lisa pilte</a>
+		</li> 
+		<li class="nav-item">
+			<a class="nav-link" href="?logout=1">Logi välja</a>
+		</li>
+	</ul>
+</nav>
