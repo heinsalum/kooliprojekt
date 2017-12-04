@@ -22,3 +22,8 @@ body
 .nav-item {
 	margin-right: 5px;
 }
+
+.galleryItem {
+	height: 200px;
+	width: 300px;
+}
