@@ -201,6 +201,7 @@
 		<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 			<label>Kasutajanimi (E-post): </label>
 			<input name="loginEmail" type="email" value="<?php echo $loginEmail; ?>"><span class="errornotice"><?php echo $loginEmailError; ?></span>
+			<label>Parool: </label>
 			<input name="loginPassword" placeholder="Salasõna" type="password"><span></span>
 			<input name="loginButton" type="submit" value="Logi sisse"><span class="errornotice"><?php echo $notice; ?></span>
 		</form>
@@ -232,10 +233,11 @@
 		<br><br>
 		
 		<label>Kasutajanimi (E-post)</label>
-		<input name="signupEmail" type="email" value="<?php echo $signupEmail; ?>">
+		<input name="signupEmail" type="email" "value="<?php echo $signupEmail; ?>">
 		<span class="errornotice"><?php echo $signupEmailError; ?></span>
 		<br><br>
-		<input name="signupPassword" placeholder="Salasõna" type="password">
+		<label>Parool </label>
+		<input name="signupPassword" type="password">
 		<span class="errornotice"><?php echo $signupPasswordError; ?></span>
 		<br><br>
 
