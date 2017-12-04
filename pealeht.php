@@ -14,7 +14,9 @@
 		session_destroy();
 		header("Location: login.php");
 	}
-	
+
+	$testGal = testGal();
+
 	require("header.php");
 ?>
 
@@ -28,11 +30,9 @@
 
 	<h1>Lisatud pildid</h1
 	<link rel="stylesheet" type="text/css" href="styles/general.css">
+	<?php foreach($testGal as $galItem){ echo $galItem; } ?>
 	
-	<img src="http://placehold.it/300x200" alt="#">
-	<img src="http://placehold.it/300x200" alt="#">
-	<img src="http://placehold.it/300x200" alt="#">
-	<img src="http://placehold.it/300x200" alt="#">
+	
 	
 </body>
 </html>
