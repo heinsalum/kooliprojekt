@@ -24,8 +24,8 @@
 				$_SESSION["userId"] = $id;
 				$_SESSION["userEmail"] = $emailFromDb;
 				
-				//liigume edasi pealehele (pealeht.php)
-				header("Location: pealeht.php");
+				//liigume edasi pealehele (index.php)
+				header("Location: index.php");
 				exit();
 			} else {
 				$notice = "Vale salasõna!";

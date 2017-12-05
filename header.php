@@ -9,7 +9,7 @@
 <body>
 
 <nav class="navbar navbar-expand-sm navbar-custom">
-	<a class="navbar-brand" href="pealeht.php">Tere tulemast pealehele!</a>
+	<a class="navbar-brand" href="index.php">Tere tulemast pealehele!</a>
 	
 	<ul class="nav">
 		<li class="nav-item" >
