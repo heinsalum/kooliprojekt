@@ -30,12 +30,13 @@
 
 	<h1>Lisatud pildid</h1
 	<link rel="stylesheet" type="text/css" href="styles/general.css">
-	<?php foreach($testGal as $galItem){ echo $galItem; } ?>
+	<div class="container text-center">
+		<?php foreach($testGal as $galItem){ echo $galItem; } ?>
+	</div>
 	
 	
 	
-</body>
-</html>
+
 
 <?php
 

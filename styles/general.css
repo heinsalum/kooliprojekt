@@ -1,6 +1,10 @@
+html {
+	height: 100%;
+}
 body
 {
 	background-color:#add8e6;
+	padding-bottom: 6rem;
 }
 
 .errornotice
@@ -10,10 +14,7 @@ body
 }
 
 .footer {
-	position: absolute;
-	bottom: 0;
 	background-color: #f8f9fa;
-	width: 100%;
 }
 .navbar {
 	background-color: #f8f9fa;
@@ -22,8 +23,11 @@ body
 .nav-item {
 	margin-right: 5px;
 }
-
 .galleryItem {
-	height: 200px;
-	width: 300px;
+	margin: 15px;
+}
+p {
+	margin-left: 30px;
+	margin-bottom: 0px;
+	width: 100%;
 }

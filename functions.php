@@ -69,18 +69,43 @@
 	}
 	
 	function testGal(){
+		$counter = 0;
 		$dir = "pictures/";
 		$galleryItems = [];
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-		$stmt = $mysqli->prepare("SELECT id, nimi, hinne, yleslaadija, fail FROM galeriid ORDER BY hinne DESC");
-		$stmt -> bind_result($id, $name, $rating, $uploader, $filename);
+		$stmt = $mysqli->prepare("SELECT id, name, rating, votecount, uploader, filename FROM galleries ORDER BY rating DESC");
+		$stmt -> bind_result($id, $name, $rating, $votecount, $uploader, $filename);
 		$stmt -> execute();
 		while ($stmt->fetch()) {
-			array_push($galleryItems, '<img class="galleryItem" src="' . $dir. $filename.'" alt="asi galeriis">');
+			$username = findUsername($uploader);
+			if($counter == 3){
+				$counter=-1;
+				array_push($galleryItems, '<div class="col-3"><img class="galleryItem img-fluid" src="' . $dir. $filename.'" alt="asi galeriis"><div class="row"><p>'. $name.'</p></div><div class="row"><p>'. $username.'</p></div><div class="row"><p>'. $rating.' ('. $votecount. ' hindajat)</p></div></div></div> ');
+			} elseif ($counter == 0){
+				array_push($galleryItems, '<div class="row"><div class="col-3"><img class="galleryItem img-fluid" src="' . $dir. $filename.'" alt="asi galeriis"><div class="row text-xs-center"><p>'. $name.'</p></div><div class="row"><p>'. $username.'</p></div><div class="row"><p>'. $rating.' ('. $votecount. ' hindajat)</p></div></div> ');
+			} else {
+			 	array_push($galleryItems, '<div class="col-3"><img class="galleryItem img-fluid" src="' . $dir. $filename.'" alt="asi galeriis"><div class="row"><p>'. $name.'</p></div><div class="row"><p>'. $username.'</p></div><div class="row"><p>'. $rating.' ('. $votecount. ' hindajat)</p></div></div> ');
+			}
+			$counter = $counter + 1;
 		}
+		array_push($galleryItems, '</div>');
 		return $galleryItems;
 		$stmt -> close();
 		$mysqli -> close();
 	}
+	function findUsername($uploaderId){
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+		$stmt = $mysqli->prepare("SELECT firstname, lastname FROM kasutajad WHERE id = ?");
+		$stmt -> bind_param("i", $uploaderId);
+		$stmt -> bind_result($firstname, $lastname);
+		$stmt ->execute();
+		$stmt ->fetch();
+		$username = $firstname. " ". $lastname;
+		return $username;
+		$stmt -> close();
+		$mysqli -> close();
+	}
+	function rating($id, $vote){
 
+	}
 ?>
