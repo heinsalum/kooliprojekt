@@ -71,6 +71,8 @@
 				
 				
 				//kasutan klassi
+				echo $target_file;
+				addToDb($target_file, $_POST["filename"], $_SESSION["userId"]);
 				$myPhoto = new Photoupload($_FILES["fileToUpload"]["tmp_name"], $imageFileType);
 				$myPhoto->readExif();
 				$myPhoto->resizeImage($maxWidth, $maxHeight);
@@ -96,6 +98,7 @@
 		<label>Valige pildifail:</label>
 		<br>
 		<input type="file" name="fileToUpload" id="fileToUpload">
+		<input type="text" name="filename" id="filename" placeholder="Pealkiri">
 		<input type="submit" value="Lae üles" name="submit" id="submitPhoto"><span id="fileSizeError"></span>
 	</form>
 	
