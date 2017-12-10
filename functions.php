@@ -122,7 +122,6 @@
 	}
 	function upvote($id){
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-		echo "vajutasid upvote";
 		$stmt = $mysqli->prepare("SELECT rating FROM galleries WHERE id = ?");
 		$stmt -> bind_param("i", $id);
 		$stmt -> bind_result($ratingPre);
@@ -150,7 +149,6 @@
 		$stmt -> execute();
 		$stmt -> fetch();
 		$ratingPost = $ratingPre - 1;
-		echo $ratingPost;
 		$stmt -> close();
 		$mysqli -> close();
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
