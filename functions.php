@@ -80,11 +80,26 @@
 			$username = findUsername($uploader);
 			if($counter == 3){
 				$counter=-1;
-				array_push($galleryItems, '<div class="col-3"><img class="galleryItem img-fluid" src="' . $dir. $filename.'" alt="asi galeriis"><div class="row"><p>'. $name.'</p></div><div class="row"><p>'. $username.'</p></div><div class="row"><p>'. $rating.' ('. $votecount. ' hindajat)</p></div></div></div> ');
+				array_push($galleryItems, '<div class="col-3"><img class="galleryItem img-fluid" src="' . $dir. $filename.'" alt="asi galeriis">
+				<div class="row"><p>'. $name.'</p></div>
+				<div class="row"><p>'. $username.'</p></div>
+				<div class="row"><p>'. $rating.' ('. $votecount. ' hindajat)</p></div>
+				<div class="row btnRow"><div class="col-2"></div><form method="POST" action="'. $_SERVER["PHP_SELF"].'"><div class="col-2 buttonCont"><input type="submit" name="downvote" class="btn button-downvote"><input type="hidden" value="'.$id.'" name="idstash"></form></div><div class="col-4"></div><div class="col-2 buttonCont"><form method="POST" action="'. $_SERVER["PHP_SELF"].'"><input type="submit" name="upvote" class="btn button-upvote"><input type="hidden" value="'.$id.'" name="idstash"></form></div><div class="col-2"></div></div></div></div> ');
 			} elseif ($counter == 0){
-				array_push($galleryItems, '<div class="row"><div class="col-3"><img class="galleryItem img-fluid" src="' . $dir. $filename.'" alt="asi galeriis"><div class="row text-xs-center"><p>'. $name.'</p></div><div class="row"><p>'. $username.'</p></div><div class="row"><p>'. $rating.' ('. $votecount. ' hindajat)</p></div></div> ');
+				array_push($galleryItems, '<div class="row">
+				<div class="col-3"><img class="galleryItem img-fluid" src="' . $dir. $filename.'" alt="asi galeriis">
+				<div class="row text-center"><p>'. $name.'</p></div>		
+				<div class="row"><p>'. $username.'</p></div>
+				<div class="row"><p>'. $rating.' ('. $votecount. ' hindajat)</p></div>
+				<div class="row btnRow"><div class="col-2"></div><form method="POST" action="'. $_SERVER["PHP_SELF"].'"><div class="col-2 buttonCont"><input type="submit" name="downvote" class="btn button-downvote"><input type="hidden" value="'.$id.'" name="idstash"></form></div><div class="col-4"></div><div class="col-2 buttonCont"><form method="POST" action="'. $_SERVER["PHP_SELF"].'"><input type="submit" name="upvote" class="btn button-upvote"><input type="hidden" value="'.$id.'" name="idstash"></form></div><div class="col-2"></div></div>
+				</div>');
 			} else {
-			 	array_push($galleryItems, '<div class="col-3"><img class="galleryItem img-fluid" src="' . $dir. $filename.'" alt="asi galeriis"><div class="row"><p>'. $name.'</p></div><div class="row"><p>'. $username.'</p></div><div class="row"><p>'. $rating.' ('. $votecount. ' hindajat)</p></div></div> ');
+				 array_push($galleryItems, '<div class="col-3"><img class="galleryItem img-fluid" src="' . $dir. $filename.'" alt="asi galeriis">
+				<div class="row"><p>'. $name.'</p></div>
+				<div class="row"><p>'. $username.'</p></div>
+				<div class="row"><p>'. $rating.' ('. $votecount. ' hindajat)</p></div>
+				<div class="row btnRow"><div class="col-2"></div>
+				<form method="POST" action="'. $_SERVER["PHP_SELF"]. '"><div class="col-2 buttonCont"><input type="submit" name="downvote" class="btn button-downvote"><input type="hidden" value="'.$id.'" name="idstash"></form></div><div class="col-4"></div><div class="col-2 buttonCont"><form method="POST" action="'. $_SERVER["PHP_SELF"].'"><input type="submit" name="upvote" class="btn button-upvote"><input type="hidden" value="'.$id.'" name="idstash"></div></form><div class="col-2"></div></div></div> ');
 			}
 			$counter = $counter + 1;
 		}
@@ -98,14 +113,57 @@
 		$stmt = $mysqli->prepare("SELECT firstname, lastname FROM users WHERE id = ?");
 		$stmt -> bind_param("i", $uploaderId);
 		$stmt -> bind_result($firstname, $lastname);
-		$stmt ->execute();
-		$stmt ->fetch();
+		$stmt -> execute();
+		$stmt -> fetch();
 		$username = $firstname. " ". $lastname;
 		return $username;
 		$stmt -> close();
 		$mysqli -> close();
 	}
-	function rating($id, $vote){
-
+	function upvote($id){
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+		echo "vajutasid upvote";
+		$stmt = $mysqli->prepare("SELECT rating FROM galleries WHERE id = ?");
+		$stmt -> bind_param("i", $id);
+		$stmt -> bind_result($ratingPre);
+		$stmt -> execute();
+		$stmt -> fetch();
+		$ratingPost = $ratingPre + 1;
+		$stmt -> close();
+		$mysqli -> close();
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+		$stmt = $mysqli->prepare("UPDATE galleries SET rating = $ratingPost WHERE id = $id");
+		$stmt -> execute();
+		$stmt -> close();
+		$mysqli -> close();	
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+		$stmt = $mysqli->prepare("UPDATE galleries SET votecount = votecount + 1 WHERE id=$id");
+		$stmt -> execute();
+		$stmt -> close();
+		$mysqli -> close();		
+	}
+	function downvote($id){
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+		$stmt = $mysqli->prepare("SELECT rating FROM galleries WHERE id = ?");
+		$stmt -> bind_param("i", $id);
+		$stmt -> bind_result($ratingPre);
+		$stmt -> execute();
+		$stmt -> fetch();
+		$ratingPost = $ratingPre - 1;
+		echo $ratingPost;
+		$stmt -> close();
+		$mysqli -> close();
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+		$stmt = $mysqli->prepare("UPDATE galleries SET rating = $ratingPost WHERE id = ?");
+		$stmt -> bind_param("i", $id);
+		$stmt -> execute();
+		$stmt -> close();
+		$mysqli -> close();	
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+		$stmt = $mysqli->prepare("UPDATE galleries SET votecount = votecount + 1 WHERE id = ?");
+		$stmt -> bind_param("i", $id);
+		$stmt -> execute();
+		$stmt -> close();
+		$mysqli -> close();		
 	}
 ?>

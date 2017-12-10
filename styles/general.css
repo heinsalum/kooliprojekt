@@ -31,3 +31,17 @@ p {
 	margin-bottom: 0px;
 	width: 100%;
 }
+.button-downvote {
+	height: 15px;
+	width: 20px;
+}
+.button-upvote {
+	height: 15px;
+	width: 20px;
+}
+.btnRow {
+	padding-left: 16%;
+}
+.buttonCont { 
+	padding: 0;
+}

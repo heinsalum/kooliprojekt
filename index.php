@@ -14,7 +14,17 @@
 		session_destroy();
 		header("Location: login.php");
 	}
-
+	if (isset($_POST["upvote"])){
+		$id = $_POST["idstash"];
+		echo $id;
+		echo "vajutasid";
+		upvote($id);
+	}
+	if (isset($_POST["downvote"])){
+		$id = $_POST["idstash"];
+		echo "vajutasid midagi";
+		downvote($id);
+	}
 	$testGal = testGal();
 
 	require("header.php");
@@ -31,7 +41,7 @@
 	<h1>Lisatud pildid</h1
 	<link rel="stylesheet" type="text/css" href="styles/general.css">
 	<div class="container text-center">
-		<?php foreach($testGal as $galItem){ echo $galItem; } ?>
+		<?php foreach($testGal as $galItem){echo $galItem;} ?>
 	</div>
 	
 	
