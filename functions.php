@@ -9,7 +9,7 @@
 		$notice = "";
 		//ühendus serveriga
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-		$stmt = $mysqli->prepare("SELECT id, email, password FROM kasutajad WHERE email = ?");
+		$stmt = $mysqli->prepare("SELECT id, email, password FROM users WHERE email = ?");
 		$stmt->bind_param("s", $email);
 		$stmt->bind_result($id, $emailFromDb, $passwordFromDb);
 		$stmt->execute();
@@ -44,7 +44,7 @@
 		
 	$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
 		//valmistame ette käsu andmebaasiserverile
-		$stmt = $mysqli->prepare("INSERT INTO kasutajad (firstname, lastname, birthday, gender, email, password) VALUES (?, ?, ?, ?, ?, ?)");
+		$stmt = $mysqli->prepare("INSERT INTO users (firstname, lastname, birthday, gender, email, password) VALUES (?, ?, ?, ?, ?, ?)");
 		echo $mysqli->error;
 		//s - string
 		//i - integer
@@ -95,7 +95,7 @@
 	}
 	function findUsername($uploaderId){
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-		$stmt = $mysqli->prepare("SELECT firstname, lastname FROM kasutajad WHERE id = ?");
+		$stmt = $mysqli->prepare("SELECT firstname, lastname FROM users WHERE id = ?");
 		$stmt -> bind_param("i", $uploaderId);
 		$stmt -> bind_result($firstname, $lastname);
 		$stmt ->execute();
