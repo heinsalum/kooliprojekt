@@ -1,7 +1,7 @@
 <?php
 	require ("functions.php");
 	if (isset($_SESSION["userId"])){
-		header("Location: pealeht.php");
+		header("Location: index.php");
 		exit();
 	}	
 	
