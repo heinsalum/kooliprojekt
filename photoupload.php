@@ -41,7 +41,7 @@
 			
 			$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
 			if($check !== false) {
-				$notice .= "Fail on pilt - " . $check["mime"] . ". ";
+				$notice .= "Järgmise nimega pilt on edukalt üles laetud - " . $check["mime"] . ". ";
 				$uploadOk = 1;
 			} else {
 				$notice .= "See pole pildifail. ";
@@ -86,15 +86,30 @@
 	}
 	require("header.php");
 ?>
-
-	<h2>Foto üleslaadimine</h2>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="styles/general.css">
+	<h2>Fotode üleslaadimine</h2>
+	<br>
 	<form action="photoupload.php" method="post" enctype="multipart/form-data">
 		<label>Valige pildifail:</label>
+		<br>
 		<input type="file" name="fileToUpload" id="fileToUpload">
 		<input type="submit" value="Lae üles" name="submit" id="submitPhoto"><span id="fileSizeError"></span>
 	</form>
 	
 	<span><?php echo $notice; ?></span>
+	<br>
+	<br>
+	<br>
+	<h3> Siin on pildifaili lisamise meelespead: <h3>
+	<p> --> Lubatud on järgmised pildifaili tüübid: .jpg .jpeg .png .gif!</p>
+	<p> --> Kui fail ei ole pildifail, siis seda üles laadida ei saa!</p>
+	<p> --> Server automaatselt vähendab pildi originaalresolutsiooni 600x400 resolutsioonile!</p>
+	<p> --> Pildifaili maksimaalne suurus on 2 MB(megabait)!</p>
+	<p> --> Lisatud pildid kuvatakse pealehel!</p>
+	<p> --> Palun mitte laadida liiga isiklikke pilte ega kellegi teise mainet rikkuvaid pilte! </p>
+	
 <?php
 	require("footer.php");
 	echo '<script type="text/javascript" src="javascript/checkFileSize.js"></script>';

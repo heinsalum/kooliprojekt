@@ -45,3 +45,8 @@ p {
 .buttonCont { 
 	padding: 0;
 }
+
+.notice {
+	color: red;
+	font-weight: bold;
+}
