@@ -164,4 +164,12 @@
 		$stmt -> close();
 		$mysqli -> close();		
 	}
+	function addToDb($filename, $name, $userid){
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+		$stmt = $mysqli->prepare("INSERT INTO galleries(name, filename, uploader) VALUES(?, ?, ?)");
+		$stmt -> bind_param("ssi", $name, $filename, $userid);
+		$stmt -> execute();
+		$stmt -> close();
+		$mysqli -> close();
+	}
 ?>
