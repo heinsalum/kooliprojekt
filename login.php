@@ -197,25 +197,33 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<h2>Logi sisse!</h2>
+		<h2>Logi sisse: </h2>
 		<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 			<label>Kasutajanimi (E-post): </label>
 			<input name="loginEmail" type="email" value="<?php echo $loginEmail; ?>"><span class="errornotice"><?php echo $loginEmailError; ?></span>
+			<br>
 			<label>Parool: </label>
 			<input name="loginPassword" placeholder="Salasõna" type="password"><span></span>
 			<input name="loginButton" type="submit" value="Logi sisse"><span class="errornotice"><?php echo $notice; ?></span>
 		</form>
 	</nav>
 	<div class="container">
-	<h1>Loo kasutaja</h1>
-	<p>Kui pole veel kasutajat....</p>
-	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h1>Loo uus kasutaja</h1>
+	<br>
+	<p class="font-weight-bold">Kui kasutajat pole veel loodud, siis tuleb seda kõigepealt teha!</p>
+	<br>
 	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-		<label>Eesnimi </label>
+	<br>
+		<label>Sisestage oma eesnimi </label>
 		<input name="signupFirstName" type="text" value="<?php echo $signupFirstName; ?>">
 		<span class="errornotice"><?php echo $signupFirstNameError; ?></span>
 		<br>
-		<label>Perekonnanimi </label>
+		<label>Sisestage oma perekonnanimi </label>
 		<input name="signupFamilyName" type="text" value="<?php echo $signupFamilyName; ?>">
 		<span class="errornotice"><?php echo $signupFamilyNameError; ?></span>
 		<br>
@@ -226,12 +234,12 @@
 		<span class="errornotice"><?php echo $signupBirthDayError; ?></span>
 		
 		<br><br>
-		<label>Sugu</label>
+		<label>Palun valige oma sugu</label>
 		<br>
 		<input type="radio" name="gender" value="1" <?php if ($gender == "1") {echo 'checked';} ?>><label>Mees</label> <!-- Kõik läbi POST'i on string!!! -->
+		<br>
 		<input type="radio" name="gender" value="2" <?php if ($gender == "2") {echo 'checked';} ?>><label>Naine</label><span class="errornotice"><?php echo $signupGenderError; ?></span>
 		<br><br>
-		
 		<label>Kasutajanimi (E-post)</label>
 		<input name="signupEmail" type="email" "value="<?php echo $signupEmail; ?>">
 		<span class="errornotice"><?php echo $signupEmailError; ?></span>
@@ -242,7 +250,7 @@
 		<br><br>
 
 		
-		<input name="signUpButton" type="submit" value="Loo kasutaja">
+		<input name="signUpButton" type="submit" value="Loo kasutaja"> 
 	</form>
 	</div>
 <?php
